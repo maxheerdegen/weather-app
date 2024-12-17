@@ -1,4 +1,6 @@
 import "./styles.css";
-import { greeting } from "./greeting.js";
+import { getWeather, processData } from "./data";
 
-console.log(greeting);
+const currentWeather = await getWeather("Tokyo");
+console.log(currentWeather);
+console.log(processData(currentWeather));
