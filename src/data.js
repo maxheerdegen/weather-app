@@ -1,6 +1,7 @@
 async function getWeather(location) {
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=SD4V3AKRJAKVC5XPUBA84K46A&contentType=json`, {mode: 'cors'});
     const weatherData = await response.json();
+    console.log(weatherData);
     return weatherData;
 }
 
