@@ -1,4 +1,4 @@
-import { getWeather } from "./data";
+import { getWeather, getImage } from "./data";
 
 const searchbar = document.querySelector("#search");
 const confirmButton = document.querySelector(".confirm");
@@ -6,7 +6,6 @@ const dataDiv = document.querySelector(".data");
 
 function displayData (data) {
     const location = document.createElement("div");
-    const condition = document.createElement("div");
     const temperature = document.createElement("div");
     const description = document.createElement("div");
     const minMaxTemp = document.createElement("div");
@@ -33,6 +32,12 @@ async function search() {
     }
     console.log(processedData);
     displayData(processedData);
+    setBackground(processedData.condition);
+}
+
+async function setBackground(condition) {
+    const imageURL = await getImage(condition);
+    document.body.style.backgroundImage = `url("${imageURL}")`;
 }
 
 confirmButton.addEventListener("click", search);

@@ -22,4 +22,14 @@ function processData (weatherData) {
     return { description, condition, temperature, minTemp, maxTemp };
 }
 
-export {  getWeather, processData }; 
+async function getImage(searchTerm) {
+    try {
+        const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=XorlfQwwaqnikgletS4aSr1gPRrRIiSQ&s=${searchTerm}`, {mode: "cors"})
+        const imageData = await response.json();
+        return imageData.data.images.original.url
+    } catch {
+        console.log("no image");
+    }
+};
+
+export {  getWeather, processData, getImage }; 
